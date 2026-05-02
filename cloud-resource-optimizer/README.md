@@ -1,20 +1,109 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# ☁️ Cloud Resource Allocation Optimizer
 
-# Run and deploy your AI Studio app
+A simulation system that models how modern cloud platforms allocate limited compute resources using **0/1 Knapsack (Dynamic Programming)** to achieve optimal workload selection.
 
-This contains everything you need to run your app locally.
+---
 
-View your app in AI Studio: https://ai.studio/apps/9327387a-b227-4217-96f3-f69a5c8e60ec
+## 🚀 Overview
 
-## Run Locally
+Cloud systems operate under strict resource constraints (CPU, memory, etc.) while handling multiple incoming workloads. This project demonstrates how to **select the most valuable subset of tasks** without exceeding available capacity.
 
-**Prerequisites:**  Node.js
+The system compares:
+- ✅ **Dynamic Programming (Optimal Solution)**
+- ⚠️ **Greedy Approach (Approximation)**
 
+---
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 🎯 Problem Statement
+
+Given:
+- A fixed CPU capacity (server limit)
+- A set of tasks, each with:
+  - CPU requirement (weight)
+  - Value (profit/priority)
+
+Goal:
+> Maximize total value without exceeding CPU capacity.
+
+This is modeled as a **0/1 Knapsack Problem**.
+
+---
+
+## 🧠 Key Concepts
+
+- Dynamic Programming (DP)
+- Greedy Algorithms
+- Optimization under constraints
+- Algorithm comparison (optimal vs approximate)
+
+---
+
+## ⚙️ How It Works
+
+### 1. Input
+User provides:
+- CPU capacity
+- List of tasks (CPU, value)
+
+---
+
+### 2. Dynamic Programming (Optimal)
+
+We compute a DP table:
+
+dp[i][w] = max(
+  dp[i-1][w],
+  value[i] + dp[i-1][w - cpu[i]]
+)
+
+Result:
+- Maximum achievable value
+- Exact set of selected tasks
+
+---
+
+### 3. Greedy Approximation
+
+- Sort tasks by value/cpu ratio
+- Select while capacity allows
+
+Result:
+- Faster but not always optimal
+
+---
+
+### 4. Comparison
+
+The system displays:
+- DP result (optimal)
+- Greedy result
+- Difference in output
+
+---
+
+## 🖥️ Features
+
+- 📥 Add/remove tasks dynamically
+- ⚙️ Adjustable CPU capacity
+- 📊 Optimal allocation using DP
+- ⚡ Greedy comparison
+- 📈 Visual result breakdown
+- 🎯 Clean dashboard UI
+
+---
+
+## 🧱 Tech Stack
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Vercel (deployment)
+
+---
+
+## 📊 Complexity Analysis
+
+| Algorithm | Time Complexity | Space Complexity |
+|----------|---------------|-----------------|
+| DP
