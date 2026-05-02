@@ -1,0 +1,6 @@
+{
+  "name": "Cloud Resource Optimizer",
+  "description": "Multi-dimensional knapsack dynamic programming solver for cloud resource allocation maximizing revenue under CPU and RAM constraints.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
